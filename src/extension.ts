@@ -1,6 +1,6 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import only some of the modules from vscode
-import { ConfigurationTarget, ExtensionContext, window, workspace } from 'vscode'
+import { ConfigurationTarget, ExtensionContext, window, workspace, commands } from 'vscode'
 import { RichQuickPickItem, ToggleConfig, OnOff } from './types'
 
 // this method is called when your extension is activated
