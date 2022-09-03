@@ -25,6 +25,30 @@ export async function activate(context: ExtensionContext) {
     const { name, newState, store, configTarget } = selection
     const settings = toggleConfig[name][newState]
     
+    for (const key in settings) {
+        if (key === '_label') continue
+
+        const val = settings[key]
+        const currentConfig = configValueForTarget(key, configTarget)
+        let newConfig
+
+        // Merge objects, overwrite other types
+        if (val && typeof val === 'object' && !Array.isArray(val)) {
+            if (!currentConfig || typeof currentConfig === 'object') {
+                newConfig = { ...currentConfig, ...val }
+            } else {
+                window.showErrorMessage(
+                    'Settings on 🔥 error! Toggle configuration specified is a different type than the existing one.',
+                )
+                return
+            }
+        } else {
+            newConfig = val
+        }
+        config.update(key, newConfig, configTarget)
+        store.update(name, newState)
+    }
+
     // Use the console to output diagnostic information (console.log) and errors (console.error)
     // This line of code will only be executed once when your extension is activated
     console.log('Congratulations, your extension "vscode-settings-switcher" is now active!');
