@@ -65,9 +65,6 @@ export async function activate(context: ExtensionContext) {
     context.subscriptions.push(disposable);
 }
 
-// this method is called when your extension is deactivated
-export function deactivate() {}
-
 function configValueForTarget(configSection: string, target: ConfigurationTarget) {
     const data = workspace.getConfiguration().inspect(configSection)
     if (!data) return
@@ -116,3 +113,6 @@ function getQuickPickItems(context: ExtensionContext, toggleConfig: ToggleConfig
 
     return items
 }
+
+// this method is called when your extension is deactivated
+export function deactivate() {}
