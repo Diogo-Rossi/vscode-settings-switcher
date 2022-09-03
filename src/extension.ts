@@ -3,9 +3,27 @@
 import { ConfigurationTarget, ExtensionContext, window, workspace, commands } from 'vscode'
 import { RichQuickPickItem, ToggleConfig, OnOff } from './types'
 
+const CONFIG_SECTION = 'settingsOnFire.toggle'
+
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
-export function activate(context: ExtensionContext) {
+export async function activate(context: ExtensionContext) {
+    
+    const config = workspace.getConfiguration()
+    const toggleConfig = config.get(CONFIG_SECTION) as ToggleConfig | undefined
+    
+    if (!toggleConfig) {
+        window.showErrorMessage('No Toggle configuration found.')
+        return
+    }
+    
+    const items = getQuickPickItems(context, toggleConfig)
+    
+    const selection = await window.showQuickPick(items)
+    if (!selection) return
+    
+    const { name, newState, store, configTarget } = selection
+    const settings = toggleConfig[name][newState]
     
     // Use the console to output diagnostic information (console.log) and errors (console.error)
     // This line of code will only be executed once when your extension is activated
