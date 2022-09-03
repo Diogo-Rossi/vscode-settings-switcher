@@ -25,3 +25,41 @@ export function activate(context: ExtensionContext) {
 
 // this method is called when your extension is deactivated
 export function deactivate() {}
+
+function getConfigTargetForSection(configSection: string) {
+    const data = workspace.getConfiguration().inspect(configSection)
+    if (!data) return
+
+    return data.workspaceValue !== undefined
+        ? ConfigurationTarget.Workspace
+        : ConfigurationTarget.Global
+}
+
+function getQuickPickItems(context: ExtensionContext, toggleConfig: ToggleConfig) {
+    const items: RichQuickPickItem[] = []
+
+    for (const name in toggleConfig) {
+        const configTarget = getConfigTargetForSection(
+            `${CONFIG_SECTION}.${name}`,
+        ) as ConfigurationTarget
+
+        const store =
+            configTarget === ConfigurationTarget.Workspace ? context.workspaceState : context.globalState
+
+        const currentState: OnOff = store.get(name) || 'off'
+        const newState = currentState === 'on' ? 'off' : 'on'
+        const newConfig = toggleConfig[name][newState]
+        const description = newConfig._label || newState
+
+        items.push({
+            label: name,
+            description,
+            name,
+            newState,
+            configTarget,
+            store,
+        })
+    }
+
+    return items
+}
