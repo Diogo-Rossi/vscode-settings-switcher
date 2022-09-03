@@ -44,6 +44,17 @@ export async function activate(context: ExtensionContext) {
 // this method is called when your extension is deactivated
 export function deactivate() {}
 
+function configValueForTarget(configSection: string, target: ConfigurationTarget) {
+    const data = workspace.getConfiguration().inspect(configSection)
+    if (!data) return
+
+    return target === ConfigurationTarget.Global
+        ? data.globalValue
+        : target === ConfigurationTarget.Workspace
+            ? data.workspaceValue
+            : data.workspaceFolderValue
+}
+
 function getConfigTargetForSection(configSection: string) {
     const data = workspace.getConfiguration().inspect(configSection)
     if (!data) return
