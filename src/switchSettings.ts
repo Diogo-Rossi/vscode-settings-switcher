@@ -5,7 +5,7 @@ import { RichQuickPickItem, ToggleConfig, Setting } from './types'
 
 const CONFIG_SECTION = 'settingsSwitcher.toggle'
 
-export async function toggleSettings(context: ExtensionContext) {
+export async function switchSettings(context: ExtensionContext) {
     
     const config = workspace.getConfiguration()
     const toggleConfig = config.get(CONFIG_SECTION) as ToggleConfig | undefined

@@ -10,14 +10,14 @@
     "Other"
   ],
   "activationEvents": [
-    "onCommand:vscode-settings-switcher.toggleSettings"
+    "onCommand:vscode-settings-switcher.switchSettings"
   ],
   "main": "./out/index.js",
   "contributes": {
     "commands": [
       {
-        "command": "vscode-settings-switcher.toggleSettings",
-        "title": "Toggle Settings"
+        "command": "vscode-settings-switcher.switchSettings",
+        "title": "Switch Settings"
       }
     ]
   },
