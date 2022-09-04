@@ -21,6 +21,7 @@
     "settingsSwitcher.toggle": {
         "Arrays": {
             "firstOption": {
+                "description": "my first options",
                 "emmet.excludeLanguages": [
                     "markdown",
                     "javascriptreact"
