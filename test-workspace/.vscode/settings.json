@@ -41,6 +41,7 @@
         },
         "Simple value": {
             "editor10": {
+                "_label": "my description",
                 "editor.fontSize": 10,
             },
             "editor18": {
@@ -52,8 +53,8 @@
         },
     },
     "emmet.excludeLanguages": [
-        "python",
-        "whoopy"
+        "markdown",
+        "javascriptreact"
     ],
-    "editor.fontSize": 16
+    "editor.fontSize": 10
 }
