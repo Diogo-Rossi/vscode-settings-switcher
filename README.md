@@ -12,21 +12,20 @@ of settings.
 
 The following example shows 2 grous of settings to switch:
 
-```json
+```jsonc
 "settingsSwitcher.lists": {
     "Vertical rulers": {
         "Ruler 80": {
             "description": "Cyan ruler line at column 80",
-            "editor.rulers": [{"column": 79, "color": "#4f717a" }, ]
+            "editor.rulers": [{"column": 79, "color": "#4f717a" }]
         },
         "Ruler 85": {
             "description": "Yellow ruler line at column 85",
-            "editor.rulers": [ { "column": 84, "color": "#615f44" },
-            ]
+            "editor.rulers": [ { "column": 84, "color": "#615f44" }]
         },
         "Ruler 95": {
             "description": "Blue ruler line at column 95",
-            "editor.rulers": [ { "column": 94, "color": "#00028a" }, ]
+            "editor.rulers": [ { "column": 94, "color": "#00028a" }]
         },
     },
     "Fonts and theme": {
@@ -82,7 +81,7 @@ You may include the `"description"` key property in each setting definition to
 provide more clarity around what switching the setting will do. The following
 example uses a setting from the [Python extension for Visual Studio Code](https://github.com/Microsoft/vscode-python)
 
-```json
+```jsonc
 "settingsSwitcher.lists": {
     "Arguments to run python in terminal": {
         "Normal mode": {
@@ -110,7 +109,7 @@ any amount of *groups* of settings, each group may have any amount of
 *definitions* and each definition may have a *description* and any amount of
 settings. So, there are 3 levels of keys:
 
-```json
+```jsonc
 "settingsSwitcher.lists": {
     "First group of settings": {
         "First definition": {
