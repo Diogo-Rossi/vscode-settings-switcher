@@ -96,13 +96,12 @@ function getQuickPickItems(context: ExtensionContext, toggleConfig: ToggleConfig
     
     for (const name in toggleConfig) {
         const configTarget = getConfigTargetForSection(
-            `${toggleConfig}.${name}`,
+            `${CONFIG_SECTION}.${name}`,
         ) as ConfigurationTarget
         
         const store =
             configTarget === ConfigurationTarget.Workspace ? context.workspaceState : context.globalState
             
-        const currentState: string = store.get(name) || Object.keys(toggleConfig[name])[0]
         const newState = 'temp'
         const description = name
         
