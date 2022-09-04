@@ -5,6 +5,6 @@ import { toggleSettings } from './toggleSettings'
 // your extension is activated the very first time the command is executed
 export const activate = async function activate(context: ExtensionContext) {
     context.subscriptions.push(
-        commands.registerCommand('settingsOnFire.toggleSettings', () => toggleSettings(context))
+        commands.registerCommand('vscode-settings-switcher.toggleSettings', () => toggleSettings(context))
     )
 }

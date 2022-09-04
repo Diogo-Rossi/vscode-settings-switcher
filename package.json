@@ -10,14 +10,14 @@
     "Other"
   ],
   "activationEvents": [
-    "onCommand:vscode-settings-switcher.helloWorld"
+    "onCommand:vscode-settings-switcher.toggleSettings"
   ],
-  "main": "./out/extension.js",
+  "main": "./out/index.js",
   "contributes": {
     "commands": [
       {
-        "command": "vscode-settings-switcher.helloWorld",
-        "title": "Hello World"
+        "command": "vscode-settings-switcher.toggleSettings",
+        "title": "Toggle Settings"
       }
     ]
   },
