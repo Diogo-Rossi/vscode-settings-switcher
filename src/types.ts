@@ -7,10 +7,26 @@ type Config = {
     [setting: string]: any
 }
 
-export type ToggleConfig = {
+type ConfigList = {
+    [name: string]: {
+        [setting: string]: Config
+    }
+}
+
+type ConfigOnOff = {
     [name: string]: {
         on: Config
         off: Config
+    }
+}
+
+// export type ToggleConfig = {
+//     [namelist: ConfigList | ConfigOnOff]
+// }
+
+export type ToggleConfig = {
+    [name: string]: {
+        [setting: string]: Config
     }
 }
 
