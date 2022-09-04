@@ -19,32 +19,41 @@
         "**/tests": true
     },
     "settingsOnFireTest.toggle": {
-        "Array": {
-            "on": {
+        "Arrays": {
+            "firstOption": {
                 "emmet.excludeLanguages": [
                     "markdown",
                     "javascriptreact"
                 ],
             },
-            "off": {
+            "secondOption": {
                 "emmet.excludeLanguages": [
                     "python",
                     "whoopy"
                 ],
             },
+            "thirdOption": {
+                "emmet.excludeLanguages": [
+                    "dart",
+                    "flutter"
+                ],
+            },
         },
         "Simple value": {
-            "on": {
-                "editor.fontSize": 16,
+            "editor10": {
+                "editor.fontSize": 10,
             },
-            "off": {
-                "editor.fontSize": 12,
+            "editor18": {
+                "editor.fontSize": 18,
+            },
+            "editor36": {
+                "editor.fontSize": 36,
             },
         },
     },
     "emmet.excludeLanguages": [
-        "markdown",
-        "javascriptreact"
+        "python",
+        "whoopy"
     ],
     "editor.fontSize": 16
 }
