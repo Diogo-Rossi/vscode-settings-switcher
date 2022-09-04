@@ -19,7 +19,7 @@ export async function toggleSettings(context: ExtensionContext) {
     const majorSelection = await window.showQuickPick(majorItems)
     if (!majorSelection) return
     
-    const items = getQuickPickItems(context, toggleConfig[majorSelection.label])
+    const items = getQuickPickItems(context, toggleConfig[majorSelection.label], majorSelection.label)
     
     const selection = await window.showQuickPick(items)
     if (!selection) return
@@ -91,12 +91,12 @@ function getConfigTargetForSection(configSection: string) {
         : ConfigurationTarget.Global
 }
 
-function getQuickPickItems(context: ExtensionContext, toggleConfig: ToggleConfig) {
+function getQuickPickItems(context: ExtensionContext, toggleConfig: ToggleConfig, parent: string) {
     const items: RichQuickPickItem[] = []
     
     for (const name in toggleConfig) {
         const configTarget = getConfigTargetForSection(
-            `${CONFIG_SECTION}.${name}`,
+            `${CONFIG_SECTION}.${parent}`,
         ) as ConfigurationTarget
         
         const store =
