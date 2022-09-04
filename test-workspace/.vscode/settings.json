@@ -18,7 +18,7 @@
         "**/*.spec.js": true,
         "**/tests": true
     },
-    "settingsSwitcher.toggle": {
+    "settingsSwitcher.lists": {
         "Arrays": {
             "firstOption": {
                 "description": "my first options",
