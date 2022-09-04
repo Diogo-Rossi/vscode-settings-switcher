@@ -40,10 +40,10 @@ export async function toggleSettings(context: ExtensionContext) {
         // Merge objects, overwrite other types
         if (val && typeof val === 'object' && !Array.isArray(val)) {
             if (!currentConfig || typeof currentConfig === 'object') {
-                newConfig = { currentConfig, val }
+                newConfig = val
             } else {
                 window.showErrorMessage(
-                    'Settings on 🔥 error! Toggle configuration specified is a different type than the existing one.',
+                    'Settings Switcher error! Toggle configuration specified is a different type than the existing one.',
                 )
                 return
             }
