@@ -5,9 +5,7 @@ import { RichQuickPickItem, ToggleConfig, OnOff } from './types'
 
 const CONFIG_SECTION = 'settingsOnFire.toggle'
 
-// this method is called when your extension is activated
-// your extension is activated the very first time the command is executed
-export async function activate(context: ExtensionContext) {
+export async function toggleSettings(context: ExtensionContext) {
     
     const config = workspace.getConfiguration()
     const toggleConfig = config.get(CONFIG_SECTION) as ToggleConfig | undefined
