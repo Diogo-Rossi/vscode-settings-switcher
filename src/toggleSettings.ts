@@ -157,7 +157,7 @@ function getMajorQuickPickItems(context: ExtensionContext, toggleConfig: ToggleC
         
         const store =
             configTarget === ConfigurationTarget.Workspace ? context.workspaceState : context.globalState
-        
+            
         const currentState: string = store.get(name) || Object.keys(toggleConfig[name])[0]
         const description = currentState
         
