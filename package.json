@@ -21,7 +21,18 @@
                 "command": "vscode-settings-switcher.switchSettings",
                 "title": "Switch Settings"
             }
-        ]
+        ],
+        "configuration": {
+            "type": "object",
+            "title": "Settings Switcher Configuration",
+            "properties": {
+                "settingsSwitcher.lists": {
+                    "type": "object",
+                    "default": {},
+                    "description": "Settings Switcher's group of settings"
+                }
+            }
+        }
     },
     "scripts": {
         "vscode:prepublish": "npm run compile",
