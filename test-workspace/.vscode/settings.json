@@ -19,43 +19,64 @@
         "**/tests": true
     },
     "settingsSwitcher.lists": {
-        "Arrays": {
-            "firstOption": {
-                "description": "my first options",
-                "emmet.excludeLanguages": [
-                    "markdown",
-                    "javascriptreact"
-                ],
+        "Vertical rulers": {
+            "Ruler 80": {
+                "description": "Cyan ruler line at column 80",
+                "editor.rulers": [
+                    {
+                        "column": 79,
+                        "color": "#4f717a"
+                    },
+                ]
             },
-            "secondOption": {
-                "emmet.excludeLanguages": [
-                    "python",
-                    "whoopy"
-                ],
+            "Ruler 85": {
+                "description": "Yellow ruler line at column 85",
+                "editor.rulers": [
+                    {
+                        "column": 84,
+                        "color": "#615f44"
+                    },
+                ]
             },
-            "thirdOption": {
-                "emmet.excludeLanguages": [
-                    "dart",
-                    "flutter"
-                ],
+            "Ruler 95": {
+                "description": "Blue ruler line at column 95",
+                "editor.rulers": [
+                    {
+                        "column": 94,
+                        "color": "#00028a"
+                    },
+                ]
             },
         },
-        "Simple value": {
-            "editor10": {
-                "description": "my description",
-                "editor.fontSize": 10,
-            },
-            "editor18": {
+        "Fonts and theme": {
+            "Big font dark":{
                 "editor.fontSize": 18,
+                "workbench.colorTheme": "Default Dark+"
             },
-            "editor36": {
-                "editor.fontSize": 36,
+            "Small font light":{
+                "editor.fontSize": 10,
+                "workbench.colorTheme": "Default Light+"
             },
-        },
+            "Big font light":{
+                "editor.fontSize": 18,
+                "workbench.colorTheme": "Default Dark+"
+            },
+            "Small font dark":{
+                "editor.fontSize": 10,
+                "workbench.colorTheme": "Default Light+"
+            },
+        }
     },
     "emmet.excludeLanguages": [
         "markdown",
         "javascriptreact"
     ],
-    "editor.fontSize": 10
+    "editor.fontSize": 12,
+    "workbench.colorTheme": "Default Dark+",
+    "editor.rulers": [
+        {
+            "column": 94,
+            "color": "#00028a"
+        }
+    ]
 }
