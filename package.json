@@ -10,7 +10,7 @@
     "categories": [
         "Other"
     ],
-    "icon": "icons/icon.png",
+    "icon": "images/icon.png",
     "activationEvents": [
         "onCommand:vscode-settings-switcher.switchSettings"
     ],
