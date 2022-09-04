@@ -54,13 +54,13 @@ export async function toggleSettings(context: ExtensionContext) {
     // The command has been defined in the package.json file
     // Now provide the implementation of the command with registerCommand
     // The commandId parameter must match the command field in package.json
-    let disposable = commands.registerCommand('vscode-settings-switcher.helloWorld', () => {
-        // The code you place here will be executed every time your command is executed
-        // Display a message box to the user
-        window.showInformationMessage('Hello World from VSCode Settings Switcher!');
-    });
+    // let disposable = commands.registerCommand('vscode-settings-switcher.helloWorld', () => {
+    //     // The code you place here will be executed every time your command is executed
+    //     // Display a message box to the user
+    //     window.showInformationMessage('Hello World from VSCode Settings Switcher!');
+    // });
     
-    context.subscriptions.push(disposable);
+    // context.subscriptions.push(disposable);
 }
 
 function configValueForTarget(configSection: string, target: ConfigurationTarget) {
