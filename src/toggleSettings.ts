@@ -3,7 +3,7 @@
 import { ConfigurationTarget, ExtensionContext, window, workspace, commands } from 'vscode'
 import { RichQuickPickItem, ToggleConfig, OnOff } from './types'
 
-const CONFIG_SECTION = 'settingsOnFire.toggle'
+const CONFIG_SECTION = 'settingsOnFireTest.toggle'
 
 export async function toggleSettings(context: ExtensionContext) {
     
