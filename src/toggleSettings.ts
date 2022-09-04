@@ -19,6 +19,7 @@ export async function toggleSettings(context: ExtensionContext) {
     const majorSelection = await window.showQuickPick(majorItems)
     if (!majorSelection) return
     
+    const name = majorSelection.label
     const items = getQuickPickItems(context, toggleConfig[majorSelection.label], majorSelection.label)
     
     const selection = await window.showQuickPick(items)
@@ -26,7 +27,7 @@ export async function toggleSettings(context: ExtensionContext) {
     
     selection.newState = selection.name
     
-    const { name, newState, store, configTarget } = selection
+    const { newState, store, configTarget } = selection
     const settings = toggleConfig[majorSelection.label][newState]
     
     for (const key in settings) {
