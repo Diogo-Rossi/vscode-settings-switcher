@@ -59,18 +59,14 @@
             },
             "Big font light":{
                 "editor.fontSize": 18,
-                "workbench.colorTheme": "Default Dark+"
-            },
-            "Small font dark":{
-                "editor.fontSize": 10,
                 "workbench.colorTheme": "Default Light+"
+            },
+            "Medium font dark":{
+                "editor.fontSize": 12,
+                "workbench.colorTheme": "Default Dark+"
             },
         }
     },
-    "emmet.excludeLanguages": [
-        "markdown",
-        "javascriptreact"
-    ],
     "editor.fontSize": 12,
     "workbench.colorTheme": "Default Dark+",
     "editor.rulers": [
