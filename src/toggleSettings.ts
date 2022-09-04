@@ -31,7 +31,7 @@ export async function toggleSettings(context: ExtensionContext) {
     const settings = toggleConfig[majorSelection.label][newState]
     
     for (const key in settings) {
-        if (key === '_label') continue
+        if (key === 'description') continue
         
         const val = settings[key]
         const currentConfig = configValueForTarget(key, configTarget)
@@ -104,7 +104,7 @@ function getQuickPickItems(context: ExtensionContext, setting: Setting, parent: 
             configTarget === ConfigurationTarget.Workspace ? context.workspaceState : context.globalState
             
         const newState = 'temp'
-        const description = setting[name]._label || name
+        const description = setting[name].description || name
         
         items.push({
             label: name,

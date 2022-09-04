@@ -3,7 +3,7 @@ import { ConfigurationTarget, QuickPickItem, Memento } from 'vscode'
 export type OnOff = 'on' | 'off'
 
 type Config = {
-    _label: string
+    description: string
     [setting: string]: any
 }
 
