@@ -19,13 +19,15 @@ export async function toggleSettings(context: ExtensionContext) {
     const majorSelection = await window.showQuickPick(majorItems)
     if (!majorSelection) return
     
-    const items = getQuickPickItems(context, toggleConfig)
+    const items = getQuickPickItems(context, toggleConfig[majorSelection.label])
     
     const selection = await window.showQuickPick(items)
     if (!selection) return
     
+    selection.newState = selection.name
+    
     const { name, newState, store, configTarget } = selection
-    const settings = toggleConfig[name][newState]
+    const settings = toggleConfig[majorSelection.label][newState]
     
     for (const key in settings) {
         if (key === '_label') continue
@@ -123,15 +125,14 @@ function getQuickPickItems(context: ExtensionContext, toggleConfig: ToggleConfig
     
     for (const name in toggleConfig) {
         const configTarget = getConfigTargetForSection(
-            `${CONFIG_SECTION}.${name}`,
+            `${toggleConfig}.${name}`,
         ) as ConfigurationTarget
         
         const store =
             configTarget === ConfigurationTarget.Workspace ? context.workspaceState : context.globalState
             
         const currentState: string = store.get(name) || Object.keys(toggleConfig[name])[0]
-        const newState = currentState === 'on' ? 'off' : 'on'
-        const newConfig = toggleConfig[name][newState]
+        const newState = 'temp'
         const description = name
         
         items.push({

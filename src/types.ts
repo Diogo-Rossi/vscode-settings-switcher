@@ -32,7 +32,7 @@ export type ToggleConfig = {
 
 export type RichQuickPickItem = QuickPickItem & {
     name: string
-    newState: OnOff
+    newState: string
     configTarget: ConfigurationTarget
     store: Memento
 }
