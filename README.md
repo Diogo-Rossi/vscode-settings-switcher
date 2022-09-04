@@ -1,3 +1,7 @@
+<p align="center">
+    <img height="150px" src="images/icon.png"/>
+</p>
+
 # VSCode Settings Switcher
 
 Define groups of settings to be easily switched and managed. These may be
