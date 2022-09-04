@@ -41,7 +41,7 @@
         },
         "Simple value": {
             "editor10": {
-                "_label": "my description",
+                "description": "my description",
                 "editor.fontSize": 10,
             },
             "editor18": {
