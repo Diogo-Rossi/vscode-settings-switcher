@@ -1,7 +1,7 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import only some of the modules from vscode
 import { ConfigurationTarget, ExtensionContext, window, workspace, commands, QuickPickItem } from 'vscode'
-import { RichQuickPickItem, ToggleConfig, OnOff } from './types'
+import { RichQuickPickItem, ToggleConfig, Setting } from './types'
 
 const CONFIG_SECTION = 'settingsOnFireTest.toggle'
 
@@ -91,10 +91,10 @@ function getConfigTargetForSection(configSection: string) {
         : ConfigurationTarget.Global
 }
 
-function getQuickPickItems(context: ExtensionContext, toggleConfig: ToggleConfig, parent: string) {
+function getQuickPickItems(context: ExtensionContext, setting: Setting, parent: string) {
     const items: RichQuickPickItem[] = []
     
-    for (const name in toggleConfig) {
+    for (const name in setting) {
         const configTarget = getConfigTargetForSection(
             `${CONFIG_SECTION}.${parent}`,
         ) as ConfigurationTarget
@@ -103,7 +103,7 @@ function getQuickPickItems(context: ExtensionContext, toggleConfig: ToggleConfig
             configTarget === ConfigurationTarget.Workspace ? context.workspaceState : context.globalState
             
         const newState = 'temp'
-        const description = name
+        const description = setting[name]._label || name
         
         items.push({
             label: name,

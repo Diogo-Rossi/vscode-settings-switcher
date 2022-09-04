@@ -20,10 +20,12 @@ type ConfigOnOff = {
     }
 }
 
+export type Setting = {
+    [scenario: string]: Config
+}
+
 export type ToggleConfig = {
-    [name: string]: {
-        [setting: string]: Config
-    }
+    [name: string] : Setting
 }
 
 export type RichQuickPickItem = QuickPickItem & {
