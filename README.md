@@ -14,7 +14,7 @@ of settings.
 
 ## Configuration Example
 
-The following example shows 2 grous of settings to switch:
+The following example shows 2 groups of settings to switch:
 
 ```jsonc
 "settingsSwitcher.lists": {
@@ -73,9 +73,9 @@ this second list.
 
 You can specify any amount of settings inside each group definitions. These
 settings will simply be written to your top-level settings object. For instance:
-the showed example has a group of settings "`Fonts and theme`" and each
-definition inside it changes the `fontSize` and the `colorTheme` at the same
-time. 
+the showed example has a group of settings `"Fonts and theme"` and each
+definition inside it changes the `fontSize` and the `colorTheme` together at the
+same time. 
 
 ![](images/example.gif)
 
@@ -105,6 +105,9 @@ example uses a setting from the [Python extension for Visual Studio Code](https:
 ```
 
 ![](images/python.png)
+
+If no `"description"` is provided, it will appear as empty, like in the first
+example, with the group of settings `"Fonts and theme"`.
 
 ## Extension Settings
 
