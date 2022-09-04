@@ -7,19 +7,6 @@ type Config = {
     [setting: string]: any
 }
 
-type ConfigList = {
-    [name: string]: {
-        [setting: string]: Config
-    }
-}
-
-type ConfigOnOff = {
-    [name: string]: {
-        on: Config
-        off: Config
-    }
-}
-
 export type Setting = {
     [scenario: string]: Config
 }
