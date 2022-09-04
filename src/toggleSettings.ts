@@ -129,7 +129,7 @@ function getQuickPickItems(context: ExtensionContext, toggleConfig: ToggleConfig
         const store =
             configTarget === ConfigurationTarget.Workspace ? context.workspaceState : context.globalState
             
-        const currentState: OnOff = store.get(name) || 'off'
+        const currentState: string = store.get(name) || Object.keys(toggleConfig[name])[0]
         const newState = currentState === 'on' ? 'off' : 'on'
         const newConfig = toggleConfig[name][newState]
         const description = name
@@ -159,8 +159,6 @@ function getMajorQuickPickItems(context: ExtensionContext, toggleConfig: ToggleC
             configTarget === ConfigurationTarget.Workspace ? context.workspaceState : context.globalState
         
         const currentState: string = store.get(name) || Object.keys(toggleConfig[name])[0]
-        const newState = currentState === 'on' ? 'off' : 'on'
-        const newConfig = toggleConfig[name][newState]
         const description = currentState
         
         items.push({
