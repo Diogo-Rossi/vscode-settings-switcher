@@ -18,7 +18,7 @@
         "**/*.spec.js": true,
         "**/tests": true
     },
-    "settingsOnFireTest.toggle": {
+    "settingsSwitcher.toggle": {
         "Arrays": {
             "firstOption": {
                 "emmet.excludeLanguages": [
