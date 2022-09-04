@@ -29,11 +29,11 @@ export async function toggleSettings(context: ExtensionContext) {
     
     for (const key in settings) {
         if (key === '_label') continue
-
+        
         const val = settings[key]
         const currentConfig = configValueForTarget(key, configTarget)
         let newConfig
-
+        
         // Merge objects, overwrite other types
         if (val && typeof val === 'object' && !Array.isArray(val)) {
             if (!currentConfig || typeof currentConfig === 'object') {
@@ -72,7 +72,7 @@ export async function toggleSettings(context: ExtensionContext) {
 function configValueForTarget(configSection: string, target: ConfigurationTarget) {
     const data = workspace.getConfiguration().inspect(configSection)
     if (!data) return
-
+    
     return target === ConfigurationTarget.Global
         ? data.globalValue
         : target === ConfigurationTarget.Workspace
@@ -83,7 +83,7 @@ function configValueForTarget(configSection: string, target: ConfigurationTarget
 function getConfigTargetForSection(configSection: string) {
     const data = workspace.getConfiguration().inspect(configSection)
     if (!data) return
-
+    
     return data.workspaceValue !== undefined
         ? ConfigurationTarget.Workspace
         : ConfigurationTarget.Global
@@ -91,20 +91,20 @@ function getConfigTargetForSection(configSection: string) {
 
 function getQuickPickItems2(context: ExtensionContext, toggleConfig: ToggleConfig) {
     const items: RichQuickPickItem[] = []
-
+    
     for (const name in toggleConfig) {
         const configTarget = getConfigTargetForSection(
             `${CONFIG_SECTION}.${name}`,
         ) as ConfigurationTarget
-
+        
         const store =
             configTarget === ConfigurationTarget.Workspace ? context.workspaceState : context.globalState
-
+            
         const currentState: OnOff = store.get(name) || 'off'
         const newState = currentState === 'on' ? 'off' : 'on'
         const newConfig = toggleConfig[name][newState]
         const description = newConfig._label || newState
-
+        
         items.push({
             label: name,
             description,
@@ -114,26 +114,26 @@ function getQuickPickItems2(context: ExtensionContext, toggleConfig: ToggleConfi
             store,
         })
     }
-
+    
     return items
 }
 
 function getQuickPickItems(context: ExtensionContext, toggleConfig: ToggleConfig) {
     const items: RichQuickPickItem[] = []
-
+    
     for (const name in toggleConfig) {
         const configTarget = getConfigTargetForSection(
             `${CONFIG_SECTION}.${name}`,
         ) as ConfigurationTarget
-
+        
         const store =
             configTarget === ConfigurationTarget.Workspace ? context.workspaceState : context.globalState
-
+            
         const currentState: OnOff = store.get(name) || 'off'
         const newState = currentState === 'on' ? 'off' : 'on'
         const newConfig = toggleConfig[name][newState]
         const description = name
-
+        
         items.push({
             label: name,
             description,
@@ -143,32 +143,32 @@ function getQuickPickItems(context: ExtensionContext, toggleConfig: ToggleConfig
             store,
         })
     }
-
+    
     return items
 }
 
 function getMajorQuickPickItems(context: ExtensionContext, toggleConfig: ToggleConfig) {
     const items: QuickPickItem[] = []
-
+    
     for (const name in toggleConfig) {
         const configTarget = getConfigTargetForSection(
             `${CONFIG_SECTION}.${name}`,
         ) as ConfigurationTarget
-
+        
         const store =
             configTarget === ConfigurationTarget.Workspace ? context.workspaceState : context.globalState
-
+        
         const currentState: string = store.get(name) || Object.keys(toggleConfig[name])[0]
         const newState = currentState === 'on' ? 'off' : 'on'
         const newConfig = toggleConfig[name][newState]
         const description = currentState
-
+        
         items.push({
             label: name,
             description,
         })
     }
-
+    
     return items
 }
 
