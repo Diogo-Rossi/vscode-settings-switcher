@@ -104,7 +104,7 @@ function getQuickPickItems(context: ExtensionContext, setting: Setting, parent: 
             configTarget === ConfigurationTarget.Workspace ? context.workspaceState : context.globalState
             
         const newState = 'temp'
-        const description = setting[name].description || name
+        const description = setting[name].description || ""
         
         items.push({
             label: name,
@@ -130,7 +130,7 @@ function getMajorQuickPickItems(context: ExtensionContext, toggleConfig: ToggleC
         const store =
             configTarget === ConfigurationTarget.Workspace ? context.workspaceState : context.globalState
             
-        const currentState: string = store.get(name) || Object.keys(toggleConfig[name])[0]
+        const currentState: string = store.get(name) || "Not set"
         const description = currentState
         
         items.push({
