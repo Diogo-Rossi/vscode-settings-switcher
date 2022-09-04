@@ -1,6 +1,6 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import only some of the modules from vscode
-import { ConfigurationTarget, ExtensionContext, window, workspace, commands } from 'vscode'
+import { ConfigurationTarget, ExtensionContext, window, workspace, commands, QuickPickItem } from 'vscode'
 import { RichQuickPickItem, ToggleConfig, OnOff } from './types'
 
 const CONFIG_SECTION = 'settingsOnFireTest.toggle'
@@ -14,6 +14,10 @@ export async function toggleSettings(context: ExtensionContext) {
         window.showErrorMessage('No Toggle configuration found.')
         return
     }
+    
+    const majorItems = getMajorQuickPickItems(context, toggleConfig)
+    const majorSelection = await window.showQuickPick(majorItems)
+    if (!majorSelection) return
     
     const items = getQuickPickItems(context, toggleConfig)
     
@@ -137,6 +141,31 @@ function getQuickPickItems(context: ExtensionContext, toggleConfig: ToggleConfig
             newState,
             configTarget,
             store,
+        })
+    }
+
+    return items
+}
+
+function getMajorQuickPickItems(context: ExtensionContext, toggleConfig: ToggleConfig) {
+    const items: QuickPickItem[] = []
+
+    for (const name in toggleConfig) {
+        const configTarget = getConfigTargetForSection(
+            `${CONFIG_SECTION}.${name}`,
+        ) as ConfigurationTarget
+
+        const store =
+            configTarget === ConfigurationTarget.Workspace ? context.workspaceState : context.globalState
+
+        const currentState: string = store.get(name) || Object.keys(toggleConfig[name])[0]
+        const newState = currentState === 'on' ? 'off' : 'on'
+        const newConfig = toggleConfig[name][newState]
+        const description = currentState
+
+        items.push({
+            label: name,
+            description,
         })
     }
 
