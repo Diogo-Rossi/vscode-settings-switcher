@@ -20,10 +20,6 @@ type ConfigOnOff = {
     }
 }
 
-// export type ToggleConfig = {
-//     [namelist: ConfigList | ConfigOnOff]
-// }
-
 export type ToggleConfig = {
     [name: string]: {
         [setting: string]: Config
