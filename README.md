@@ -7,6 +7,10 @@
 Define groups of settings to be easily switched and managed. These may be
 defined in either global `User Settings` or your current `Workspace settings`.
 
+This extension was largely based on the
+[ericbiewener](https://github.com/ericbiewener)'s extension
+[VScode Settings on Fire](https://github.com/ericbiewener/vscode-settings-on-fire).
+
 ## Command
 
 Provides a `Switch Settings` command that can be used to switch between groups
