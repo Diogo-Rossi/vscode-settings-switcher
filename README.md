@@ -156,7 +156,7 @@ simply overwrite the previous setting. For example, the `Tests` settings below w
 in `files.exclude` with whatever the current setting is for that key.
 
 ```json
-"settingsOnFire.toggle": {
+"settingsSwitcher.lists": {
   "Tests": {
     "Include tests": {
       "files.exclude": {
