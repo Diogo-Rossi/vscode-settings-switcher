@@ -41,7 +41,7 @@ export async function switchSettings(context: ExtensionContext) {
         if (val && typeof val === 'object' && !Array.isArray(val)) {
             if (!currentConfig || typeof currentConfig === 'object') {
                 if (currentConfig === undefined){
-                    newConfig = val
+                    newConfig = { ...val }
                 }else{
                     newConfig = { ...currentConfig, ...val }
                 }
