@@ -149,6 +149,34 @@ settings. So, there are 3 levels of keys:
     ...
 },
 ```
+## Merging vs Overwriting Settings
+
+Settings that are objects will be merged into existing settings, while any other type of value will
+simply overwrite the previous setting. For example, the `Tests` settings below will merge the values
+in `files.exclude` with whatever the current setting is for that key.
+
+```json
+"settingsOnFire.toggle": {
+  "Tests": {
+    "Include tests": {
+      "files.exclude": {
+        "**/__tests__": false,
+        "**/__mocks__": false,
+        "**/__fixtures__": false,
+        "**/*.spec.js": false,
+      }
+    },
+    "Exclude tests": {
+      "files.exclude": {
+        "**/__tests__": true,
+        "**/__mocks__": true,
+        "**/__fixtures__": true,
+        "**/*.spec.js": true,
+      }
+    }
+  }
+}
+```
 
 ## Credits
 
