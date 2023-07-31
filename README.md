@@ -157,24 +157,24 @@ in `files.exclude` with whatever the current setting is for that key.
 
 ```json
 "settingsSwitcher.lists": {
-  "Tests": {
-    "Include tests": {
-      "files.exclude": {
-        "**/__tests__": false,
-        "**/__mocks__": false,
-        "**/__fixtures__": false,
-        "**/*.spec.js": false,
-      }
-    },
-    "Exclude tests": {
-      "files.exclude": {
-        "**/__tests__": true,
-        "**/__mocks__": true,
-        "**/__fixtures__": true,
-        "**/*.spec.js": true,
-      }
+    "Tests": {
+        "Include tests": {
+            "files.exclude": {
+                "**/__tests__": false,
+                "**/__mocks__": false,
+                "**/__fixtures__": false,
+                "**/*.spec.js": false,
+            }
+        },
+        "Exclude tests": {
+            "files.exclude": {
+                "**/__tests__": true,
+                "**/__mocks__": true,
+                "**/__fixtures__": true,
+                "**/*.spec.js": true,
+            }
+        }
     }
-  }
 }
 ```
 
