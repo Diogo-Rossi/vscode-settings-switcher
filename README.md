@@ -8,8 +8,8 @@ Define groups of settings to be easily switched and managed. These may be
 defined in either global `User Settings` or your current `Workspace settings`.
 
 This extension was largely based on the
-[ericbiewener](https://github.com/ericbiewener)'s extension
-[VScode Settings on Fire](https://github.com/ericbiewener/vscode-settings-on-fire).
+[ericbiewener](https://github.com/ericbiewener)'s extension [VScode Settings on
+Fire](https://github.com/ericbiewener/vscode-settings-on-fire).
 
 ## Command
 
@@ -59,7 +59,7 @@ The following example shows 2 groups of settings to switch:
 
 By running the command `Switch Settings`, the two groups of settings `"Vertical
 rulers"` and `"Fonts and theme"` will appear as a list in your command palette.
-So, first you select which group of settings you want to switch. 
+So, first you select which group of settings you want to switch.
 
 ![](images/list1.png)
 
@@ -79,7 +79,7 @@ You can specify any amount of settings inside each group definitions. These
 settings will simply be written to your top-level settings object. For instance:
 the showed example has a group of settings `"Fonts and theme"` and each
 definition inside it changes the `fontSize` and the `colorTheme` together at the
-same time. 
+same time.
 
 ![](images/example.gif)
 
@@ -87,7 +87,8 @@ same time.
 
 You may include the `"description"` key property in each setting definition to
 provide more clarity around what switching the setting will do. The following
-example uses a setting from the [Python extension for Visual Studio Code](https://github.com/Microsoft/vscode-python)
+example uses a setting from the [Python extension for Visual Studio
+Code](https://github.com/Microsoft/vscode-python)
 
 ```jsonc
 "settingsSwitcher.lists": {
@@ -116,8 +117,8 @@ example, with the group of settings `"Fonts and theme"`.
 ## Extension Settings
 
 This extension adds VS Code setting `"settingsSwitcher.lists"`, which may have
-any amount of *groups* of settings, each group may have any amount of
-*definitions* and each definition may have a *description* and any amount of
+any amount of _groups_ of settings, each group may have any amount of
+_definitions_ and each definition may have a _description_ and any amount of
 settings. So, there are 3 levels of keys:
 
 ```jsonc
@@ -149,11 +150,13 @@ settings. So, there are 3 levels of keys:
     ...
 },
 ```
+
 ## Merging vs Overwriting Settings
 
-Settings that are objects will be merged into existing settings, while any other type of value will
-simply overwrite the previous setting. For example, the `Tests` settings below will merge the values
-in `files.exclude` with whatever the current setting is for that key.
+Settings that are objects will be merged into existing settings, while any other
+type of value will simply overwrite the previous setting. For example, the
+`Tests` settings below will merge the values in `files.exclude` with whatever
+the current setting is for that key.
 
 ```json
 "settingsSwitcher.lists": {
@@ -178,8 +181,15 @@ in `files.exclude` with whatever the current setting is for that key.
 }
 ```
 
+## `User Settings` vs `Workspace settings`.
+
+You can switch between groups of settings in either global `User Settings` or
+your current `Workspace settings`. But, to do so, the setting
+`"settingsSwitcher.lists"` with the groups of settings to switch must be defined
+in the corresponding `settings.json` file (either global or local)
+
 ## Credits
 
 The code of this extension was largely based on the
-[ericbiewener](https://github.com/ericbiewener)'s extension
-[VScode Settings on Fire](https://github.com/ericbiewener/vscode-settings-on-fire).
+[ericbiewener](https://github.com/ericbiewener)'s extension [VScode Settings on
+Fire](https://github.com/ericbiewener/vscode-settings-on-fire).
