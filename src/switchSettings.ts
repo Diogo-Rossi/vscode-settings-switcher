@@ -35,8 +35,8 @@ export async function switchSettings(context: ExtensionContext) {
         if (key === "description") continue;
 
         let scopeTarget = configTarget;
-        if (scope === "global") scopeTarget = 1;
-        if (scope === "workspace") scopeTarget = 2;
+        if (scope === "global" || scope === "user") scopeTarget = ConfigurationTarget.Global;
+        if (scope === "local" || scope === "workspace") scopeTarget = ConfigurationTarget.Workspace;
 
         const val = settings[key];
         const currentConfig = configValueForTarget(key, scopeTarget);
