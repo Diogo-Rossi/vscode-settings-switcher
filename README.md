@@ -114,16 +114,28 @@ Code](https://github.com/Microsoft/vscode-python)
 If no `"description"` is provided, it will appear as empty, like in the first
 example, with the group of settings `"Fonts and theme"`.
 
+## User Settings vs Workspace settings
+
+You can switch between groups of settings in either global `User Settings` or
+your current `Workspace settings`. To do so, the setting
+`"settingsSwitcher.lists"` with the groups of settings to switch must be defined
+in the corresponding `settings.json` file (either global or local)
+
+You can also change which file (global or workspace) is modified by
+including a `_scope` key in defined group of settings. This key accept the
+values `"global"` and `"workspace"`.
+
 ## Extension Settings
 
 This extension adds VS Code setting `"settingsSwitcher.lists"`, which may have
-any amount of _groups_ of settings, each group may have any amount of
-_definitions_ and each definition may have a _description_ and any amount of
-settings. So, there are 3 levels of keys:
+any amount of _groups_ of settings, each group may have a _scope_ property and
+any amount of _definitions_ and each definition may have a _description_ and any
+amount of _settings_. So, there are 3 levels of keys:
 
 ```jsonc
 "settingsSwitcher.lists": {
     "First group of settings": {
+        "_scope": "workspace",  // optional: "workspace" or "global"
         "First definition": {
             "description": "...", // optional
             [vscode settings ...] // Any amount of VSCode settings
@@ -137,6 +149,7 @@ settings. So, there are 3 levels of keys:
             [vscode settings ...] // Any amount of VSCode settings
         },
     "Second group of settings": {
+        "_scope": "workspace",  // optional: "workspace" or "global"
         "First definition": {
             "description": "...", // optional
             [vscode settings ...] // Any amount of VSCode settings
@@ -180,13 +193,6 @@ the current setting is for that key.
     }
 }
 ```
-
-## `User Settings` vs `Workspace settings`.
-
-You can switch between groups of settings in either global `User Settings` or
-your current `Workspace settings`. But, to do so, the setting
-`"settingsSwitcher.lists"` with the groups of settings to switch must be defined
-in the corresponding `settings.json` file (either global or local)
 
 ## Credits
 
