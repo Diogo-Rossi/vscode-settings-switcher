@@ -6,6 +6,10 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 ## [0.6.0] - 2023-11-20
 
+-   Update documentation
+
+## [0.6.0] - 2023-11-20
+
 -   ✨ feat: adds "scope" option to define where to apply the settings.
 
 ## [0.5.0] - 2023-08-08
