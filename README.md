@@ -119,11 +119,12 @@ example, with the group of settings `"Fonts and theme"`.
 You can switch between groups of settings in either global `User Settings` or
 your current `Workspace settings`. To do so, the setting
 `"settingsSwitcher.lists"` with the groups of settings to switch must be defined
-in the corresponding `settings.json` file (either global or local)
+in the corresponding `settings.json` file (either global or local). The local
+file (i.e., workspace settings) takes precedence.
 
 You can also change which file (global or workspace) is modified by
 including a `_scope` key in defined group of settings. This key accept the
-values `"global"` and `"workspace"`.
+values `"global"` (or `"user"`) and `"local"` (or `"workspace"`).
 
 ## Extension Settings
 
