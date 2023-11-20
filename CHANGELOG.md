@@ -4,7 +4,12 @@ All notable changes to the "vscode-settings-switcher" extension will be document
 
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
-## [0.6.0] - 2023-11-20
+## [0.7.0] - 2023-11-20
+
+-   ✨ feat: add `"local"` and `"user"`as possible values for `"_scope"`.
+-   Update documentation
+
+## [0.6.1] - 2023-11-20
 
 -   Update documentation
 
