@@ -1,23 +1,23 @@
-import { ConfigurationTarget, QuickPickItem, Memento } from 'vscode'
+import { ConfigurationTarget, QuickPickItem, Memento } from "vscode";
 
-export type OnOff = 'on' | 'off'
+export type OnOff = "on" | "off";
 
 type Config = {
-    description: string
-    [setting: string]: any
-}
+    description: string;
+    [setting: string]: any;
+};
 
 export type Setting = {
-    [scenario: string]: Config
-}
+    [scenario: string]: Config;
+};
 
 export type ToggleConfig = {
-    [name: string] : Setting
-}
+    [name: string]: Setting;
+};
 
 export type RichQuickPickItem = QuickPickItem & {
-    name: string
-    newState: string
-    configTarget: ConfigurationTarget
-    store: Memento
-}
+    name: string;
+    newState: string;
+    configTarget: ConfigurationTarget;
+    store: Memento;
+};
