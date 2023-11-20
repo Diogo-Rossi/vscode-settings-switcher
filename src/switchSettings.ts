@@ -1,7 +1,7 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import only some of the modules from vscode
 import { ConfigurationTarget, ExtensionContext, window, workspace, commands, QuickPickItem } from "vscode";
-import { RichQuickPickItem, ToggleConfig, Setting } from "./types";
+import { RichQuickPickItem, ToggleConfig, Setting, Config } from "./types";
 
 const CONFIG_SECTION = "settingsSwitcher.lists";
 
@@ -18,6 +18,8 @@ export async function switchSettings(context: ExtensionContext) {
     const majorSelection = await window.showQuickPick(majorItems);
     if (!majorSelection) return;
 
+    const scope = toggleConfig[majorSelection.label]["_scope"] as unknown as string;
+
     const name = majorSelection.label;
     const items = getQuickPickItems(context, toggleConfig[majorSelection.label], majorSelection.label);
 
@@ -32,8 +34,12 @@ export async function switchSettings(context: ExtensionContext) {
     for (const key in settings) {
         if (key === "description") continue;
 
+        let scopeTarget = configTarget;
+        if (scope === "global") scopeTarget = 1;
+        if (scope === "workspace") scopeTarget = 2;
+
         const val = settings[key];
-        const currentConfig = configValueForTarget(key, configTarget);
+        const currentConfig = configValueForTarget(key, scopeTarget);
         let newConfig;
 
         // Merge objects, overwrite other types
@@ -46,14 +52,14 @@ export async function switchSettings(context: ExtensionContext) {
                 }
             } else {
                 window.showErrorMessage(
-                    "Settings Switcher error! Toggle configuration specified is a different type than the existing one.",
+                    "Settings Switcher error! Toggle configuration specified is a different type than the existing one."
                 );
                 return;
             }
         } else {
             newConfig = val;
         }
-        config.update(key, newConfig, configTarget);
+        config.update(key, newConfig, scopeTarget);
         store.update(name, newState);
     }
 
@@ -97,6 +103,7 @@ function getQuickPickItems(context: ExtensionContext, setting: Setting, parent: 
     const items: RichQuickPickItem[] = [];
 
     for (const name in setting) {
+        if (name === "_scope") continue;
         const configTarget = getConfigTargetForSection(`${CONFIG_SECTION}.${parent}`) as ConfigurationTarget;
 
         const store = configTarget === ConfigurationTarget.Workspace ? context.workspaceState : context.globalState;
