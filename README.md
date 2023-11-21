@@ -122,9 +122,9 @@ your current `Workspace settings`. To do so, the setting
 in the corresponding `settings.json` file (either global or local). The local
 file (i.e., workspace settings) takes precedence.
 
-You can also change which file (global or workspace) is modified by
-including a `_scope` key in defined group of settings. This key accept the
-values `"global"` (or `"user"`) and `"local"` (or `"workspace"`).
+Alternatively, you can also change which file (global or workspace) is modified
+by including a `_scope` key in the defined group of settings. This key accept
+the values `"global"` (or `"user"`) and `"local"` (or `"workspace"`).
 
 ## Extension Settings
 
