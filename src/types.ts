@@ -21,3 +21,9 @@ export type RichQuickPickItem = QuickPickItem & {
     configTarget: ConfigurationTarget;
     store: Memento;
 };
+
+export type CommandArgs = {
+    group?: string;
+    cycler?: boolean;
+    definition?: string;
+};

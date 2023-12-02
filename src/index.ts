@@ -5,6 +5,6 @@ import { switchSettings } from "./switchSettings";
 // your extension is activated the very first time the command is executed
 export const activate = async function activate(context: ExtensionContext) {
     context.subscriptions.push(
-        commands.registerCommand("vscode-settings-switcher.switchSettings", () => switchSettings(context)),
+        commands.registerCommand("vscode-settings-switcher.switchSettings", (args) => switchSettings(context, args)),
     );
 };
