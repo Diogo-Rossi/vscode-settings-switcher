@@ -1,11 +1,11 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import only some of the modules from vscode
 import { ConfigurationTarget, ExtensionContext, window, workspace, commands, QuickPickItem } from "vscode";
-import { RichQuickPickItem, ToggleConfig, Setting, Config } from "./types";
+import { RichQuickPickItem, ToggleConfig, Setting, Config, CommandArgs } from "./types";
 
 const CONFIG_SECTION = "settingsSwitcher.lists";
 
-export async function switchSettings(context: ExtensionContext) {
+export async function switchSettings(context: ExtensionContext, args: CommandArgs | undefined) {
     const config = workspace.getConfiguration();
     const toggleConfig = config.get(CONFIG_SECTION) as ToggleConfig | undefined;
 
