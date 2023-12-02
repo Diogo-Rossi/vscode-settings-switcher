@@ -14,14 +14,21 @@ export async function switchSettings(context: ExtensionContext, args: CommandArg
         return;
     }
 
-    const majorItems = getMajorQuickPickItems(context, toggleConfig);
-    const majorSelection = await window.showQuickPick(majorItems);
-    if (!majorSelection) return;
+    if (args === undefined) args = {};
 
-    const scope = toggleConfig[majorSelection.label]["_scope"] as unknown as string;
+    var group = args.group;
 
-    const name = majorSelection.label;
-    const items = getQuickPickItems(context, toggleConfig[majorSelection.label], majorSelection.label);
+    if (!group) {
+        const majorItems = getMajorQuickPickItems(context, toggleConfig);
+        const majorSelection = await window.showQuickPick(majorItems);
+        if (!majorSelection) return;
+        group = majorSelection.label;
+    }
+    
+    const scope = toggleConfig[group]["_scope"] as unknown as string;
+
+    const name = group;
+    const items = getQuickPickItems(context, toggleConfig[group], group);
 
     const selection = await window.showQuickPick(items);
     if (!selection) return;
@@ -29,7 +36,7 @@ export async function switchSettings(context: ExtensionContext, args: CommandArg
     selection.newState = selection.name;
 
     const { newState, store, configTarget } = selection;
-    const settings = toggleConfig[majorSelection.label][newState];
+    const settings = toggleConfig[group][newState];
 
     for (const key in settings) {
         if (key === "description") continue;
