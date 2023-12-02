@@ -1,4 +1,13 @@
 {
     "printWidth": 130,
-    "tabWidth": 4
+    "tabWidth": 4,
+    "overrides": [
+        {
+            "files": "*.md",
+            "options": {
+                "proseWrap": "always",
+                "printWidth": 80
+            }
+        }
+    ]
 }
