@@ -25,6 +25,11 @@ export async function switchSettings(context: ExtensionContext, args: CommandArg
         group = majorSelection.label;
     }
 
+    if (!toggleConfig.hasOwnProperty(group)) {
+        window.showErrorMessage(`Group of settings "${group}" does not exist in setting "settingsSwitcher.lists" !`);
+        return;
+    }
+
     const scope = toggleConfig[group]["_scope"] as unknown as string;
 
     const name = group;
