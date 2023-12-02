@@ -28,15 +28,15 @@ The following example shows 2 groups of settings to switch:
     "Vertical rulers": {
         "Ruler 80": {
             "description": "Cyan ruler line at column 80",
-            "editor.rulers": [{"column": 79, "color": "#4f717a" }]
+            "editor.rulers": [{"column": 80, "color": "#4f717a" }]
         },
         "Ruler 85": {
             "description": "Yellow ruler line at column 85",
-            "editor.rulers": [ { "column": 84, "color": "#615f44" }]
+            "editor.rulers": [ { "column": 85, "color": "#615f44" }]
         },
         "Ruler 95": {
             "description": "Blue ruler line at column 95",
-            "editor.rulers": [ { "column": 94, "color": "#00028a" }]
+            "editor.rulers": [ { "column": 95, "color": "#00028a" }]
         },
     },
     "Fonts and theme": {
@@ -106,7 +106,7 @@ example uses a setting from the
             "python.terminal.launchArgs": [ "-i" ]
         },
         "IPython interactive mode": {
-            "description": "Run `python -m IPython -i script.py`",
+            "description": "Use IPython module and keeps open, run `python -m IPython -i script.py`",
             "python.terminal.launchArgs": [ "-m", "IPython", "-i" ]
         },
     },
@@ -121,15 +121,16 @@ example in the group of settings `"Fonts and theme"`.
 ## User Settings vs Workspace settings
 
 You can switch between groups of settings in either global `User Settings` or
-your current `Workspace settings`. To do so, the setting
+your local `Workspace settings`. To do so, the setting
 `"settingsSwitcher.lists"` with the groups of settings to switch must be defined
 in the corresponding `settings.json` file (either global or local). The local
 file (i.e., workspace settings) takes precedence.
 
+### ✨ _new in v0.6.0_
+
 Alternatively, you can also change which file (global or workspace) is modified
 by including a `_scope` key in the defined group of settings. This key accept
-the values `"global"` (or `"user"`) and `"local"` (or `"workspace"`) (✨ _new in
-v0.6.0_).
+the values `"global"` (or `"user"`) and `"local"` (or `"workspace"`).
 
 ## Extension Settings
 
@@ -228,12 +229,12 @@ setting definition `"Small font light"` from the group of settings
 
 If you pass the `"cycler"` property with a Boolean `true` (and don't pass a
 `"definition"`), the keybinding makes the setting to _cycle_ through the
-definitions list of the group of settings (in a similar way as the
+definitions list of the group (in a similar way as the
 [Settings Cycler extension](https://github.com/hoovercj/vscode-api-playground/blob/master/SettingsCycler/README.md#settings-cycler)).
 
 The following is an example of keybinding configuring a command to cycle through
-setting `""editor.rulers""` in the list of definitions of the group of settings
-`"Vertical rulers"` of the previous example.
+setting `"editor.rulers"` in the list of definitions of the group
+`"Vertical rulers"` in the previous example.
 
 ```json
 {
@@ -246,29 +247,32 @@ setting `""editor.rulers""` in the list of definitions of the group of settings
 }
 ```
 
-Note: **If you pass a `"definition"` AND the `"cycler"` property, the `"cycler"`
-property and the cycling behavior is ignored.**
+**Note: If you pass a `"definition"` AND the `"cycler"` property together with a
+`"group"`, the `"cycler"` property, as well as the cycling behavior, is
+ignored.**
 
 Some combinations of the `"args"` properties are also possible, and they may
 save some time when doing actions to change settings:
 
 1. If you pass the args with only the `"group"` property, the keybinding will
-   jump to open the list of settings of the that group in your command palette.
+   make the command to jump forward to open the list of definitions of that
+   group in your command palette.
 2. If you pass only the `"definition"` property, a first list will appear in
-   your command palette showing the groups of settings. Then, if you choose a
-   group that has that definition in its list, the definition will be applied
-   directly, and the the second list of the normal command will not appear.
+   your command palette showing the groups of settings to choose. Then, if you
+   choose a group that has the passed definition in its list, the definition
+   will be applied directly, and the the second list of the default command call
+   will not appear.
 3. If you pass only the `"cycler"` property with Boolean `true`, the first list
-   will appear in your command palette, showing the groups of settings, but the
-   settings will cycle through the definitions of any chosen group, applying the
-   cycling behavior, and the the second list of the normal command will not
-   appear.
+   will appear in your command palette, showing the groups of settings to
+   choose, but the settings will cycle through the definitions of any chosen
+   group, applying the cycling behavior. So, the the second list of the default
+   command call will not appear.
 4. If you pass the `"definition"` and the `"cycler"` properties, a first list
-   will appear in your command palette showing the groups of settings. Then, if
-   you choose a group that has that definition in its list, the definition will
-   be applied directly. If not, the settings will cycle through the definitions
-   of any other chosen group, and the the second list of the normal command will
-   not appear.
+   will appear in your command palette showing the groups of settings to choose.
+   Then, if you choose a group that has the passed definition in its list, the
+   definition will be applied directly. If not, the settings will cycle through
+   the definitions of any other chosen group. Because of that, the second list
+   of the default command call will not appear.
 
 ## Credits
 
