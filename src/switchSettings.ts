@@ -33,7 +33,11 @@ export async function switchSettings(context: ExtensionContext, args: CommandArg
     var definition = args.definition;
     var selection = getItemFromLabel(items, definition);
     if (!selection) {
-        selection = await window.showQuickPick(items);
+        if (args.cycler) {
+            selection = getNextItem(context, group, items);
+        } else {
+            selection = await window.showQuickPick(items);
+        }
     }
     if (!selection) return;
 
@@ -159,6 +163,17 @@ function getItemFromLabel(items: RichQuickPickItem[], label: string | undefined)
     for (const item in items) {
         if (items[item].name === label) return items[item];
     }
+}
+
+function getNextItem(context: ExtensionContext, name: string, items: RichQuickPickItem[]) {
+    const configTarget = getConfigTargetForSection(`${CONFIG_SECTION}.${name}`) as ConfigurationTarget;
+    const store = configTarget === ConfigurationTarget.Workspace ? context.workspaceState : context.globalState;
+    const currentState: string = store.get(name) || "";
+
+    for (const item in items) {
+        if (items[item].name === currentState && parseInt(item) < items.length - 1) return items[parseInt(item) + 1];
+    }
+    return items[0];
 }
 
 // this method is called when your extension is deactivated
