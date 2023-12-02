@@ -1,8 +1,15 @@
 # Change Log
 
-All notable changes to the "vscode-settings-switcher" extension will be documented in this file.
+All notable changes to the "vscode-settings-switcher" extension will be
+documented in this file.
 
-Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
+Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how
+to structure this file.
+
+## [0.8.0] - 2023-12-02
+
+-   ✨ feat: add arguments to main command, to provide feature of issue #1
+    (Keybindings)
 
 ## [0.7.0] - 2023-11-20
 
