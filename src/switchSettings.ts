@@ -24,13 +24,17 @@ export async function switchSettings(context: ExtensionContext, args: CommandArg
         if (!majorSelection) return;
         group = majorSelection.label;
     }
-    
+
     const scope = toggleConfig[group]["_scope"] as unknown as string;
 
     const name = group;
     const items = getQuickPickItems(context, toggleConfig[group], group);
 
-    const selection = await window.showQuickPick(items);
+    var definition = args.definition;
+    var selection = getItemFromLabel(items, definition);
+    if (!selection) {
+        selection = await window.showQuickPick(items);
+    }
     if (!selection) return;
 
     selection.newState = selection.name;
@@ -149,6 +153,12 @@ function getMajorQuickPickItems(context: ExtensionContext, toggleConfig: ToggleC
     }
 
     return items;
+}
+
+function getItemFromLabel(items: RichQuickPickItem[], label: string | undefined) {
+    for (const item in items) {
+        if (items[item].name === label) return items[item];
+    }
 }
 
 // this method is called when your extension is deactivated
