@@ -210,6 +210,8 @@ first command palette list to select.
 These information appears in the first command palette list, along with the
 current state of the setting.
 
+![](images/infos.png)
+
 ## Merging vs Overwriting Settings
 
 Settings that are objects will be merged into existing settings, while any other
