@@ -126,23 +126,41 @@ your local `Workspace settings`. To do so, the setting
 in the corresponding `settings.json` file (either global or local). The local
 file (i.e., workspace settings) takes precedence.
 
-### ✨ _new in v0.6.0_
+**✨ _new in v0.6.0_**
 
 Alternatively, you can also change which file (global or workspace) is modified
 by including a `_scope` key in the defined group of settings. This key accept
 the values `"global"` (or `"user"`) and `"local"` (or `"workspace"`).
 
+## Cycler property
+
+**✨ _new in v0.9.0_**
+
+You can include a `"_cycler"` key with a Boolean `true` in the defined group of
+settings to give that group a "cycling behavior". It makes the setting to
+_cycle_ through the definitions list of the group (in a similar way as the
+[Settings Cycler extension](https://github.com/hoovercj/vscode-api-playground/blob/master/SettingsCycler/README.md#settings-cycler)).
+In this case, the second list of the command will not appear showing the
+available settings to switch in the chosen group: it simply chooses the next
+setting in the sequence.
+
+This may be useful when the group of settings has only 2 definitions, and you
+just want to change between them: it saves one additional list to select (that
+would contain only 2 values).
+
 ## Extension Settings
 
 This extension adds VS Code setting `"settingsSwitcher.lists"`, which may have
-any amount of _groups_ of settings, each group may have a _scope_ property and
-any amount of _definitions_ and each definition may have a _description_ and any
-amount of _settings_. So, there are 3 levels of keys:
+any amount of _groups_ of settings, each group may have a _scope_ property
+and/or a _cycler_ property and any amount of _definitions_ and each definition
+may have a _description_ and any amount of _settings_. So, there are 3 levels of
+keys:
 
 ```jsonc
 "settingsSwitcher.lists": {
     "First group of settings": {
         "_scope": "workspace",  // optional: "workspace","local" or "user","global"
+        "_cycler": true,  // optional: `true` or `false`
         "First definition": {
             "description": "...", // optional
             [vscode settings ...] // Any amount of VSCode settings
@@ -157,6 +175,7 @@ amount of _settings_. So, there are 3 levels of keys:
         },
     "Second group of settings": {
         "_scope": "workspace",  // optional: "workspace","local" or "user","global"
+        "_cycler": true,  // optional: `true` or `false`
         "First definition": {
             "description": "...", // optional
             [vscode settings ...] // Any amount of VSCode settings
@@ -201,7 +220,9 @@ the current setting is for that key.
 }
 ```
 
-## Keybindings ✨ _new in v0.8.0_
+## Keybindings
+
+**✨ _new in v0.8.0_**
 
 You can invoke the command `Switch Settings` with
 [arguments, by adding a custom keyboard shortcut](https://code.visualstudio.com/docs/getstarted/keybindings#_command-arguments)
@@ -230,7 +251,9 @@ setting definition `"Small font light"` from the group of settings
 If you pass the `"cycler"` property with a Boolean `true` (and don't pass a
 `"definition"`), the keybinding makes the setting to _cycle_ through the
 definitions list of the group (in a similar way as the
-[Settings Cycler extension](https://github.com/hoovercj/vscode-api-playground/blob/master/SettingsCycler/README.md#settings-cycler)).
+[Settings Cycler extension](https://github.com/hoovercj/vscode-api-playground/blob/master/SettingsCycler/README.md#settings-cycler)),
+doing the same as if the group of settings had a
+[`"_cycler"` property](#cycler-property) itself.
 
 The following is an example of keybinding configuring a command to cycle through
 setting `"editor.rulers"` in the list of definitions of the group
@@ -247,9 +270,10 @@ setting `"editor.rulers"` in the list of definitions of the group
 }
 ```
 
-**Note: If you pass a `"definition"` AND the `"cycler"` property together with a
-`"group"`, the `"cycler"` property, as well as the cycling behavior, is
-ignored.**
+> ⚠️ **Note: If you pass a `"definition"` AND the `"cycler"` property together
+> with a `"group"`, the `"cycler"` property, as well as the _cycling behavior_,
+> is ignored. This also happens when you pass a `"definition"` with a `"group"`
+> that have a [`"_cycler"` property](#cycler-property) itself.**
 
 Some combinations of the `"args"` properties are also possible, and they may
 save some time when doing actions to change settings:
