@@ -31,6 +31,7 @@ export async function switchSettings(context: ExtensionContext, args: CommandArg
     }
 
     const scope = toggleConfig[group]["_scope"] as unknown as string;
+    const isCycler = toggleConfig[group]["_cycler"] as unknown as boolean;
 
     const name = group;
     const items = getQuickPickItems(context, toggleConfig[group], group);
@@ -38,7 +39,7 @@ export async function switchSettings(context: ExtensionContext, args: CommandArg
     var definition = args.definition;
     var selection = getItemFromLabel(items, definition);
     if (!selection) {
-        if (args.cycler) {
+        if (args.cycler || isCycler) {
             selection = getNextItem(context, group, items);
         } else {
             selection = await window.showQuickPick(items);
@@ -124,6 +125,7 @@ function getQuickPickItems(context: ExtensionContext, setting: Setting, parent: 
 
     for (const name in setting) {
         if (name === "_scope") continue;
+        if (name === "_cycler") continue;
         const configTarget = getConfigTargetForSection(`${CONFIG_SECTION}.${parent}`) as ConfigurationTarget;
 
         const store = configTarget === ConfigurationTarget.Workspace ? context.workspaceState : context.globalState;
