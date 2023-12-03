@@ -4,9 +4,9 @@ import { ConfigurationTarget, ExtensionContext, window, workspace, commands, Qui
 import { RichQuickPickItem, ToggleConfig, Setting, Config, CommandArgs } from "./types";
 
 const CONFIG_SECTION = "settingsSwitcher.lists";
-const JSON_INFO = "settingsSwitcher.fileInfo";
-const SCOPE_INFO = "settingsSwitcher.scopeInfo";
-const CYCLER_INFO = "settingsSwitcher.cyclerInfo";
+const JSON_INFO = "settingsSwitcher.showFileInfo";
+const SCOPE_INFO = "settingsSwitcher.showScopeInfo";
+const CYCLER_INFO = "settingsSwitcher.showCyclerInfo";
 
 export async function switchSettings(context: ExtensionContext, args: CommandArgs | undefined) {
     const config = workspace.getConfiguration();
