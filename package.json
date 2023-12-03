@@ -31,20 +31,20 @@
                     "default": {},
                     "description": "Settings Switcher's group of settings"
                 },
-                "settingsSwitcher.scopeInfo": {
+                "settingsSwitcher.showScopeInfo": {
                     "type": "boolean",
                     "default": false,
-                    "description": "Wether to show information about the scope of the group of settings in the list of groups to choose"
+                    "description": "Whether to show information about the scope of the group of settings in the list of groups to choose"
                 },
-                "settingsSwitcher.fileInfo": {
+                "settingsSwitcher.showFileInfo": {
                     "type": "boolean",
                     "default": false,
-                    "description": "Wether to show information about the `settings.json` file where the group of setting is defined in the list of groups to choose"
+                    "description": "Whether to show information about the `settings.json` file where the group of setting is defined in the list of groups to choose"
                 },
-                "settingsSwitcher.cyclerInfo": {
+                "settingsSwitcher.showCyclerInfo": {
                     "type": "boolean",
                     "default": false,
-                    "description": "Wether to identify if the group of settings is \"cycler\" or not in the list of groups to choose"
+                    "description": "Whether to identify if the group of settings is \"cycler\" or not in the list of groups to choose"
                 }
             }
         }
