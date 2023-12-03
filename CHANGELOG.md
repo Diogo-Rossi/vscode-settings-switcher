@@ -6,6 +6,15 @@ documented in this file.
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how
 to structure this file.
 
+## [0.9.0] - 2023-12-03
+
+-   ✨ feat: adds `"_cycler"` property option to define which group has the
+    _cycling behavior_ in the `settings.json` file.
+
+## [0.8.1] - 2023-12-02
+
+-   📄 Correct docs in marketplace.
+
 ## [0.8.0] - 2023-12-02
 
 -   ✨ feat: add arguments to main command, to provide feature of issue #1
@@ -22,7 +31,7 @@ to structure this file.
 
 ## [0.6.0] - 2023-11-20
 
--   ✨ feat: adds "scope" option to define where to apply the settings.
+-   ✨ feat: adds `"_scope"` option to define where to apply the settings.
 
 ## [0.5.0] - 2023-08-08
 
