@@ -207,7 +207,7 @@ first command palette list to select.
 -   `"settingsSwitcher.showCyclerInfo"`: if `true`, shows if the group has a
     [cycler property](#cycler-property)
 
-These information appears in the first command palette list, along with the
+These information appear in the first command palette list, along with the
 current state of the setting.
 
 ![](images/infos.png)
