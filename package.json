@@ -2,7 +2,7 @@
     "name": "vscode-settings-switcher",
     "displayName": "VSCode Settings Switcher",
     "description": "Make easier to switch between VSCode settings",
-    "version": "0.8.1",
+    "version": "0.9.0",
     "publisher": "rossidiogo",
     "engines": {
         "vscode": "^1.71.0"
