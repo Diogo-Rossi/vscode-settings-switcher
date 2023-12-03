@@ -190,6 +190,26 @@ keys:
 },
 ```
 
+**✨ _new in v0.10.0_**
+
+To help manage the settings groups and identify where they are defined and/or
+applied, now this extension also contributes the following boolean settings.
+
+These settings let you to show information about the groups of settings in the
+first command palette list to select.
+
+-   `"settingsSwitcher.showFileInfo"`: if `true`, shows information about which
+    `setting.json` file the group of settings is defined (`"workspace"` or
+    `"user"`)
+-   `"settingsSwitcher.showScopeInfo"`: if `true`, shows the
+    [scope definition](#user-settings-vs-workspace-settings) of the group,
+    (`"local"` or `"global"`) if it was defined.
+-   `"settingsSwitcher.showCyclerInfo"`: if `true`, shows if the group has a
+    [cycler property](#cycler-property)
+
+These information appears in the first command palette list, along with the
+current state of the setting.
+
 ## Merging vs Overwriting Settings
 
 Settings that are objects will be merged into existing settings, while any other

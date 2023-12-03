@@ -4,6 +4,9 @@ import { ConfigurationTarget, ExtensionContext, window, workspace, commands, Qui
 import { RichQuickPickItem, ToggleConfig, Setting, Config, CommandArgs } from "./types";
 
 const CONFIG_SECTION = "settingsSwitcher.lists";
+const JSON_INFO = "settingsSwitcher.showFileInfo";
+const SCOPE_INFO = "settingsSwitcher.showScopeInfo";
+const CYCLER_INFO = "settingsSwitcher.showCyclerInfo";
 
 export async function switchSettings(context: ExtensionContext, args: CommandArgs | undefined) {
     const config = workspace.getConfiguration();
@@ -148,14 +151,36 @@ function getQuickPickItems(context: ExtensionContext, setting: Setting, parent: 
 
 function getMajorQuickPickItems(context: ExtensionContext, toggleConfig: ToggleConfig) {
     const items: QuickPickItem[] = [];
+    const config = workspace.getConfiguration();
+    const jsonInfo = config.get(JSON_INFO);
+    const scopeInfo = config.get(SCOPE_INFO);
+    const cyclerInfo = config.get(CYCLER_INFO);
 
     for (const name in toggleConfig) {
+        const infos: string[] = [];
         const configTarget = getConfigTargetForSection(`${CONFIG_SECTION}.${name}`) as ConfigurationTarget;
+        const isInWorkspace = configTarget === ConfigurationTarget.Workspace;
 
-        const store = configTarget === ConfigurationTarget.Workspace ? context.workspaceState : context.globalState;
+        const store = isInWorkspace ? context.workspaceState : context.globalState;
 
         const currentState: string = store.get(name) || "";
-        const description = currentState;
+        if (jsonInfo) {
+            infos.push(isInWorkspace ? "file = workspace" : "file = user");
+        }
+        if (scopeInfo && toggleConfig[name]["_scope"]) {
+            infos.push(
+                String(toggleConfig[name]["_scope"]) === "workspace" || String(toggleConfig[name]["_scope"]) === "local"
+                    ? "scope = local"
+                    : "scope = global"
+            );
+        }
+        if (cyclerInfo && toggleConfig[name]["_cycler"]) {
+            infos.push("cycler");
+        }
+
+        infos.unshift(currentState);
+
+        const description = infos.join(" | ");
 
         items.push({
             label: name,

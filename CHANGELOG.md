@@ -6,6 +6,10 @@ documented in this file.
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how
 to structure this file.
 
+## [0.10.0] - 2023-12-03
+
+-   ✨ feat: adds boolean settings to show information.
+
 ## [0.9.0] - 2023-12-03
 
 -   ✨ feat: adds `"_cycler"` property option to define which group has the
