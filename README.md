@@ -7,10 +7,6 @@
 Define groups of settings to be easily switched and managed. These may be
 defined in either global `User Settings` or your current `Workspace settings`.
 
-This extension was largely based on the
-[ericbiewener](https://github.com/ericbiewener)'s extension
-[VScode Settings on Fire](https://github.com/ericbiewener/vscode-settings-on-fire).
-
 ## Command
 
 Provides a `Switch Settings` command that can be used to switch between groups
@@ -126,10 +122,12 @@ your local `Workspace settings`. To do so, the setting
 in the corresponding `settings.json` file (either global or local). The local
 file (i.e., workspace settings) takes precedence.
 
+### Scope property
+
 **✨ _new in v0.6.0_**
 
 Alternatively, you can also change which file (global or workspace) is modified
-by including a `_scope` key in the defined group of settings. This key accept
+by including a `"_scope"` key in the defined group of settings. This key accept
 the values `"global"` (or `"user"`) and `"local"` (or `"workspace"`).
 
 ## Cycler property
@@ -190,22 +188,25 @@ keys:
 },
 ```
 
+### Showing information on settings list
+
 **✨ _new in v0.10.0_**
 
 To help manage the settings groups and identify where they are defined and/or
 applied, now this extension also contributes the following boolean settings.
 
-These settings let you to show information about the groups of settings in the
-first command palette list to select.
+These settings let you to know information about the groups of settings in the
+first list to select.
 
--   `"settingsSwitcher.showFileInfo"`: if `true`, shows information about which
-    `setting.json` file the group of settings is defined (`"workspace"` or
-    `"user"`)
--   `"settingsSwitcher.showScopeInfo"`: if `true`, shows the
-    [scope definition](#user-settings-vs-workspace-settings) of the group,
-    (`"local"` or `"global"`) if it was defined.
--   `"settingsSwitcher.showCyclerInfo"`: if `true`, shows if the group has a
-    [cycler property](#cycler-property)
+-   `"settingsSwitcher.showFileInfo"`:  
+    if `true`, shows information about which `setting.json` file the group of
+    settings is defined (`"workspace"` or `"user"`)
+-   `"settingsSwitcher.showScopeInfo"`:  
+    if `true`, shows the [scope property](#scope-property) of the group,
+    (`"local"` or `"global"`) if it is set.
+-   `"settingsSwitcher.showCyclerInfo"`:  
+    if `true`, indicates if the group has a [cycler property](#cycler-property)
+    set to `true`.
 
 These information appear in the first command palette list, along with the
 current state of the setting.
