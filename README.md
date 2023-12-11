@@ -188,14 +188,14 @@ keys:
 },
 ```
 
-### Showing information on settings list
+### Show information on settings list
 
 **✨ _new in v0.10.0_**
 
 To help manage the settings groups and identify where they are defined and/or
 applied, now this extension also contributes the following boolean settings.
 
-These settings let you to know information about the groups of settings in the
+These settings let you know information about the groups of settings in the
 first list to select.
 
 -   `"settingsSwitcher.showFileInfo"`:  
@@ -250,7 +250,7 @@ the current setting is for that key.
 You can invoke the command `Switch Settings` with
 [arguments, by adding a custom keyboard shortcut](https://code.visualstudio.com/docs/getstarted/keybindings#_command-arguments)
 (with `"args"` key) to take exactly the setting you want, to cycle through the
-setting list or to avoid some steps.
+setting list or to jump some steps.
 
 The `"args"` key value must be an object with 3 possible properties: `"group"`,
 `"definition"` (both are Strings) and `"cycler"` (a Boolean value: `true` or
@@ -294,9 +294,9 @@ setting `"editor.rulers"` in the list of definitions of the group
 ```
 
 > ⚠️ **Note: If you pass a `"definition"` AND the `"cycler"` property together
-> with a `"group"`, the `"cycler"` property, as well as the _cycling behavior_,
+> with a `"group"`, then the `"cycler"` property (as well as the _cycling behavior_)
 > is ignored. This also happens when you pass a `"definition"` with a `"group"`
-> that have a [`"_cycler"` property](#cycler-property) itself.**
+> that has a [`"_cycler"` property](#cycler-property) itself.**
 
 Some combinations of the `"args"` properties are also possible, and they may
 save some time when doing actions to change settings:
@@ -307,8 +307,8 @@ save some time when doing actions to change settings:
 2. If you pass only the `"definition"` property, a first list will appear in
    your command palette showing the groups of settings to choose. Then, if you
    choose a group that has the passed definition in its list, the definition
-   will be applied directly, and the the second list of the default command call
-   will not appear.
+   will be applied directly. So, the second list of the default command call
+   will not appear for that group.
 3. If you pass only the `"cycler"` property with Boolean `true`, the first list
    will appear in your command palette, showing the groups of settings to
    choose, but the settings will cycle through the definitions of any chosen
@@ -318,7 +318,7 @@ save some time when doing actions to change settings:
    will appear in your command palette showing the groups of settings to choose.
    Then, if you choose a group that has the passed definition in its list, the
    definition will be applied directly. If not, the settings will cycle through
-   the definitions of any other chosen group. Because of that, the second list
+   the definitions of any other chosen group. So, the second list
    of the default command call will not appear.
 
 ## Credits
