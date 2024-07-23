@@ -49,19 +49,19 @@
             },
         },
         "Fonts and theme": {
-            "Big font dark":{
+            "Big font dark": {
                 "editor.fontSize": 18,
                 "workbench.colorTheme": "Default Dark+"
             },
-            "Small font light":{
+            "Small font light": {
                 "editor.fontSize": 10,
                 "workbench.colorTheme": "Default Light+"
             },
-            "Big font light":{
+            "Big font light": {
                 "editor.fontSize": 18,
                 "workbench.colorTheme": "Default Light+"
             },
-            "Medium font dark":{
+            "Medium font dark": {
                 "editor.fontSize": 12,
                 "workbench.colorTheme": "Default Dark+"
             },
@@ -69,15 +69,23 @@
         "Arguments to run python in terminal": {
             "Normal mode": {
                 "description": "No args, just run `python script.py`",
-                "python.terminal.launchArgs": [""]
+                "python.terminal.launchArgs": [
+                    ""
+                ]
             },
             "Interactive mode": {
                 "description": "Keep the opened terminal, run `python -i script.py`",
-                "python.terminal.launchArgs": [ "-i" ]
+                "python.terminal.launchArgs": [
+                    "-i"
+                ]
             },
             "IPython interactive mode": {
                 "description": "Use IPython module and keeps open, run `python -m IPython -i script.py`",
-                "python.terminal.launchArgs": [ "-m", "IPython", "-i" ]
+                "python.terminal.launchArgs": [
+                    "-m",
+                    "IPython",
+                    "-i"
+                ]
             },
         },
     },
