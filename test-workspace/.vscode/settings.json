@@ -19,6 +19,22 @@
         "**/tests": true
     },
     "settingsSwitcher.lists": {
+        "Python Organize imports": {
+            "TurnON": {
+                "[python]": {
+                    "editor.codeActionsOnSave": {
+                        "source.organizeImports": "always"
+                    }
+                }
+            },
+            "TurnOFF": {
+                "[python]": {
+                    "editor.codeActionsOnSave": {
+                        "source.organizeImports": "never"
+                    }
+                }
+            }
+        },
         "Vertical rulers": {
             "Ruler 80": {
                 "description": "Cyan ruler line at column 80",
@@ -88,6 +104,74 @@
                 ]
             },
         },
+        "Markdown prettier rulers": {
+            "At 80": {
+                "[markdown]": {
+                    "editor.wordWrap": "off",
+                    "editor.quickSuggestions": {
+                        "comments": "off",
+                        "strings": "off",
+                        "other": "off"
+                    },
+                    "editor.rulers": [
+                        {
+                            "column": 80,
+                            "color": "#8a8a8a"
+                        },
+                    ],
+                    "prettier.printWidth": 80,
+                    "prettier.proseWrap": "always"
+                },
+            },
+            "At 140": {
+                "[markdown]": {
+                    "editor.wordWrap": "on",
+                    "editor.quickSuggestions": {
+                        "comments": "on",
+                        "strings": "on",
+                        "other": "on"
+                    },
+                    "editor.rulers": [
+                        {
+                            "column": 140,
+                            "color": "#8a8a8a"
+                        },
+                    ],
+                    "prettier.printWidth": 140,
+                    "prettier.proseWrap": "always"
+                },
+            },
+        },
+        "TestProfiles": {
+            "OldSet": {
+                "terminal.integrated.profiles.windows": {
+                    "first": {
+                        "path": "ipython",
+                        "overrideName": true,
+                        "icon": "debug-start"
+                    },
+                    "second": {
+                        "path": "python",
+                        "overrideName": true,
+                        "icon": "play"
+                    },
+                }
+            },
+            "NewSet": {
+                "terminal.integrated.profiles.windows": {
+                    "third": {
+                        "path": "ipython",
+                        "overrideName": true,
+                        "icon": "debug-start"
+                    },
+                    "fourth": {
+                        "path": "python",
+                        "overrideName": true,
+                        "icon": "play"
+                    },
+                }
+            }
+        }
     },
     "editor.fontSize": 12,
     "workbench.colorTheme": "Default Dark+",
@@ -96,5 +180,37 @@
             "column": 200,
             "color": "#00028a"
         }
-    ]
+    ],
+    "editor.formatOnSave": false,
+    "[markdown]": {
+        "editor.wordWrap": "on",
+        "files.trimTrailingWhitespace": false,
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.rulers": [
+            {
+                "column": 140,
+                "color": "#8a8a8a"
+            }
+        ],
+        "rewrap.wrappingColumn": 0,
+        "prettier.proseWrap": "always",
+        "prettier.printWidth": 140,
+        "editor.quickSuggestions": {
+            "comments": "on",
+            "strings": "on",
+            "other": "on"
+        }
+    },
+    "[python]": {
+        "editor.rulers": [
+            {
+                "column": 80,
+                "color": "#8a8a8a"
+            }
+        ],
+    },
+    "editor.codeActionsOnSave": {
+        "source.organizeImports": "always"
+    },
+    "terminal.integrated.profiles.windows": {}
 }
