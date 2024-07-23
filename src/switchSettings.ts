@@ -72,7 +72,7 @@ export async function switchSettings(context: ExtensionContext, args: CommandArg
                 if (currentConfig === undefined) {
                     newConfig = { ...val };
                 } else {
-                    newConfig = { ...currentConfig, ...val };
+                    newConfig = { ...currentConfig, ...val }; // TODO: solve for nested proxy objects, ref: https://stackoverflow.com/a/69827802/9761768
                 }
             } else {
                 window.showErrorMessage(
