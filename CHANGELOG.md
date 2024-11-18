@@ -6,6 +6,10 @@ documented in this file.
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how
 to structure this file.
 
+## [0.10.2] - 2024-11-17
+
+-   🚀 release: update change log
+
 ## [0.10.1] - 2024-11-17
 
 -   🐞 fix: problem with nested proxy objects
