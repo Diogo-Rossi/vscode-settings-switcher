@@ -72,7 +72,8 @@ export async function switchSettings(context: ExtensionContext, args: CommandArg
                 if (currentConfig === undefined) {
                     newConfig = { ...val };
                 } else {
-                    newConfig = { ...currentConfig, ...val }; // TODO: solve for nested proxy objects, ref: https://stackoverflow.com/a/69827802/9761768
+                    const newVal = unProxify(val);
+                    newConfig = { ...currentConfig, ...newVal };
                 }
             } else {
                 window.showErrorMessage(
@@ -206,6 +207,19 @@ function getNextItem(context: ExtensionContext, name: string, items: RichQuickPi
         if (items[item].name === currentState && parseInt(item) < items.length - 1) return items[parseInt(item) + 1];
     }
     return items[0];
+}
+
+/**
+ * Deep clone an object with ES6 Proxy objects
+ * @param val The object to un-proxy
+ * @returns The object recursively cloned
+ * @see https://stackoverflow.com/a/69827802/9761768
+ */
+function unProxify(val: Object): Object {
+    if (val instanceof Array) return val.map(unProxify);
+    if (val instanceof Object)
+        return Object.fromEntries(Object.entries(Object.assign({}, val)).map(([k, v]) => [k, unProxify(v)]));
+    return val;
 }
 
 // this method is called when your extension is deactivated
