@@ -33,7 +33,7 @@ export async function switchSettings(context: ExtensionContext, args: CommandArg
         return;
     }
 
-    const scope = toggleConfig[group]["_scope"] as unknown as string;
+    let scope = toggleConfig[group]["_scope"] as unknown as string;
     const isCycler = toggleConfig[group]["_cycler"] as unknown as boolean;
 
     const name = group;
@@ -59,6 +59,7 @@ export async function switchSettings(context: ExtensionContext, args: CommandArg
         if (key === "description") continue;
 
         let scopeTarget = configTarget;
+        if (scope === "select") scope = (await window.showQuickPick(["global", "local"])) as string;
         if (scope === "global" || scope === "user") scopeTarget = ConfigurationTarget.Global;
         if (scope === "local" || scope === "workspace") scopeTarget = ConfigurationTarget.Workspace;
 
@@ -172,6 +173,8 @@ function getMajorQuickPickItems(context: ExtensionContext, toggleConfig: ToggleC
             infos.push(
                 String(toggleConfig[name]["_scope"]) === "workspace" || String(toggleConfig[name]["_scope"]) === "local"
                     ? "scope = local"
+                    : String(toggleConfig[name]["_scope"]) === "select"
+                    ? "scope = select"
                     : "scope = global"
             );
         }
