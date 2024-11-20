@@ -20,6 +20,7 @@
     },
     "settingsSwitcher.lists": {
         "Python Organize imports": {
+            "_scope": "select",
             "TurnON": {
                 "[python]": {
                     "editor.codeActionsOnSave": {
@@ -208,9 +209,14 @@
                 "color": "#8a8a8a"
             }
         ],
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": "always"
+        }
     },
     "editor.codeActionsOnSave": {
         "source.organizeImports": "always"
     },
-    "terminal.integrated.profiles.windows": {}
+    "terminal.integrated.profiles.windows": {},
+    "autoDocstring.docstringFormat": "google",
+    "autoDocstring.customTemplatePath": ""
 }
