@@ -160,7 +160,7 @@ keys:
 ```jsonc
 "settingsSwitcher.lists": {
     "First group of settings": {
-        "_scope": "workspace",  // optional: "workspace","local" or "user","global"
+        "_scope": "workspace",  // optional: "workspace","local" ; "user","global" or "select"
         "_cycler": true,  // optional: `true` or `false`
         "First definition": {
             "description": "...", // optional
@@ -175,7 +175,7 @@ keys:
             [vscode settings ...] // Any amount of VSCode settings
         },
     "Second group of settings": {
-        "_scope": "workspace",  // optional: "workspace","local" or "user","global"
+        "_scope": "workspace",// optional: "workspace","local" ; "user","global" or "select"
         "_cycler": true,  // optional: `true` or `false`
         "First definition": {
             "description": "...", // optional
