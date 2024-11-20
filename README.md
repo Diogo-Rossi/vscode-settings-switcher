@@ -127,8 +127,11 @@ file (i.e., workspace settings) takes precedence.
 **✨ _new in v0.6.0_**
 
 Alternatively, you can also change which file (global or workspace) is modified
-by including a `"_scope"` key in the defined group of settings. This key accept
-the values `"global"` (or `"user"`) and `"local"` (or `"workspace"`).
+by including a `"_scope"` key in the defined group of settings. This key accepts
+the values `"global"` (or `"user"`), `"local"` (or `"workspace"`) and
+`"select"`. If the value is `"select"`, an additional third list will appear
+letting you choose between `"global"` and `"local"` on the fly (**✨ _new in
+v0.11.0_**).
 
 ## Cycler property
 
@@ -294,9 +297,9 @@ setting `"editor.rulers"` in the list of definitions of the group
 ```
 
 > ⚠️ **Note: If you pass a `"definition"` AND the `"cycler"` property together
-> with a `"group"`, then the `"cycler"` property (as well as the _cycling behavior_)
-> is ignored. This also happens when you pass a `"definition"` with a `"group"`
-> that has a [`"_cycler"` property](#cycler-property) itself.**
+> with a `"group"`, then the `"cycler"` property (as well as the _cycling
+> behavior_) is ignored. This also happens when you pass a `"definition"` with a
+> `"group"` that has a [`"_cycler"` property](#cycler-property) itself.**
 
 Some combinations of the `"args"` properties are also possible, and they may
 save some time when doing actions to change settings:
@@ -318,8 +321,8 @@ save some time when doing actions to change settings:
    will appear in your command palette showing the groups of settings to choose.
    Then, if you choose a group that has the passed definition in its list, the
    definition will be applied directly. If not, the settings will cycle through
-   the definitions of any other chosen group. So, the second list
-   of the default command call will not appear.
+   the definitions of any other chosen group. So, the second list of the default
+   command call will not appear.
 
 ## Credits
 
