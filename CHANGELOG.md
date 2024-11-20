@@ -6,6 +6,10 @@ documented in this file.
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how
 to structure this file.
 
+## [0.11.0] - 2024-11-20
+
+-   ✨ feat: add `"select"` as possible value for `"_scope"`.
+
 ## [0.10.2] - 2024-11-17
 
 -   🚀 release: update change log
