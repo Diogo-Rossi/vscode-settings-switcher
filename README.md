@@ -149,19 +149,82 @@ This may be useful when the group of settings has only 2 definitions, and you
 just want to change between them: it saves one additional list to select (that
 would contain only 2 values).
 
+## Merging vs Overwriting Settings
+
+Settings that are objects will be merged into existing settings, while any other
+type of value will simply overwrite the previous setting. For example, the
+`Tests` settings below will merge the values in `files.exclude` with whatever
+the current setting is for that key.
+
+```json
+"settingsSwitcher.lists": {
+    "Tests": {
+        "Include tests": {
+            "files.exclude": {
+                "**/__tests__": false,
+                "**/__mocks__": false,
+                "**/__fixtures__": false,
+                "**/*.spec.js": false,
+            }
+        },
+        "Exclude tests": {
+            "files.exclude": {
+                "**/__tests__": true,
+                "**/__mocks__": true,
+                "**/__fixtures__": true,
+                "**/*.spec.js": true,
+            }
+        }
+    }
+}
+```
+
+### Force overwriting
+
+**✨ _new in v0.12.0_**
+
+If you want to completely overwrite the previous setting even in settings that
+are objects, you can include a `"_forceOverwrite"` key with a Boolean `true` in
+the defined group of settings.
+
+Example from
+[Project Manager extension](https://github.com/alefragnani/vscode-project-manager)
+working with
+[remote projects](https://github.com/alefragnani/vscode-project-manager?tab=readme-ov-file#working-with-remotes)
+being toggled "on" and "off":
+
+```json
+"settingsSwitcher.lists": {
+    "Project manager wsl remote": {
+        "_cycler": true,
+        "_forceOverwrite": true,
+        "on": {
+            "remote.extensionKind": {
+                "alefragnani.project-manager": [
+                    "workspace"
+                ]
+            },
+        },
+        "off": {
+            "remote.extensionKind": {}
+        }
+    },
+```
+
 ## Extension Settings
 
 This extension adds VS Code setting `"settingsSwitcher.lists"`, which may have
-any amount of _groups_ of settings, each group may have a _scope_ property
-and/or a _cycler_ property and any amount of _definitions_ and each definition
-may have a _description_ and any amount of _settings_. So, there are 3 levels of
-keys:
+any amount of _groups_ of settings, each group may have: a _scope_ property; a
+_cycler_ property; a _forceOverwrite_ property; and any amount of _definitions_.
+Each definition may have a _description_ and any amount of _settings_. So, there
+are 3 levels of keys:
 
 ```jsonc
 "settingsSwitcher.lists": {
     "First group of settings": {
         "_scope": "workspace",  // optional: "workspace","local" ; "user","global" or "select"
         "_cycler": true,  // optional: `true` or `false`
+        "_forceOverwrite": true, // optional: `true` or `false`
         "First definition": {
             "description": "...", // optional
             [vscode settings ...] // Any amount of VSCode settings
@@ -177,6 +240,7 @@ keys:
     "Second group of settings": {
         "_scope": "workspace",// optional: "workspace","local" ; "user","global" or "select"
         "_cycler": true,  // optional: `true` or `false`
+        "_forceOverwrite": true, // optional: `true` or `false`
         "First definition": {
             "description": "...", // optional
             [vscode settings ...] // Any amount of VSCode settings
@@ -215,36 +279,6 @@ These information appear in the first command palette list, along with the
 current state of the setting.
 
 ![](images/infos.png)
-
-## Merging vs Overwriting Settings
-
-Settings that are objects will be merged into existing settings, while any other
-type of value will simply overwrite the previous setting. For example, the
-`Tests` settings below will merge the values in `files.exclude` with whatever
-the current setting is for that key.
-
-```json
-"settingsSwitcher.lists": {
-    "Tests": {
-        "Include tests": {
-            "files.exclude": {
-                "**/__tests__": false,
-                "**/__mocks__": false,
-                "**/__fixtures__": false,
-                "**/*.spec.js": false,
-            }
-        },
-        "Exclude tests": {
-            "files.exclude": {
-                "**/__tests__": true,
-                "**/__mocks__": true,
-                "**/__fixtures__": true,
-                "**/*.spec.js": true,
-            }
-        }
-    }
-}
-```
 
 ## Keybindings
 
