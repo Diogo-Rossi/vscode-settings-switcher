@@ -19,6 +19,21 @@
         "**/tests": true
     },
     "settingsSwitcher.lists": {
+        "Project manager wsl remote": {
+            "_cycler": true,
+            "_forceOverwrite": true,
+            "_scope": "select",
+            "on": {
+                "remote.extensionKind": {
+                    "alefragnani.project-manager": [
+                        "workspace"
+                    ]
+                },
+            },
+            "off": {
+                "remote.extensionKind": {}
+            }
+        },
         "Python Organize imports": {
             "_scope": "select",
             "TurnON": {
@@ -218,5 +233,10 @@
     },
     "terminal.integrated.profiles.windows": {},
     "autoDocstring.docstringFormat": "google",
-    "autoDocstring.customTemplatePath": ""
+    "autoDocstring.customTemplatePath": "",
+    "remote.extensionKind": {
+        "alefragnani.project-manager": [
+            "workspace"
+        ]
+    }
 }
