@@ -6,6 +6,11 @@ documented in this file.
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how
 to structure this file.
 
+## [0.12.0] - 2025-06-06
+
+-   ✨ feat: add `"_forceOverwrite"` property option to decide whether to
+    overwrite (`true`) or merge (`false`, by default) settings that are objects.
+
 ## [0.11.0] - 2024-11-20
 
 -   ✨ feat: add `"select"` as possible value for `"_scope"`.
