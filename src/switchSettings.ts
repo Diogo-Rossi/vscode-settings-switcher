@@ -35,6 +35,7 @@ export async function switchSettings(context: ExtensionContext, args: CommandArg
 
     let scope = toggleConfig[group]["_scope"] as unknown as string;
     const isCycler = toggleConfig[group]["_cycler"] as unknown as boolean;
+    const forceOverwrite = toggleConfig[group]["_forceOverwrite"] as unknown as boolean;
 
     const name = group;
     const items = getQuickPickItems(context, toggleConfig[group], group);
@@ -74,7 +75,11 @@ export async function switchSettings(context: ExtensionContext, args: CommandArg
                     newConfig = { ...val };
                 } else {
                     const newVal = unProxify(val);
-                    newConfig = { ...currentConfig, ...newVal };
+                    if (forceOverwrite) {
+                        newConfig = { ...newVal };
+                    } else {
+                        newConfig = { ...currentConfig, ...newVal };
+                    }
                 }
             } else {
                 window.showErrorMessage(
@@ -131,6 +136,7 @@ function getQuickPickItems(context: ExtensionContext, setting: Setting, parent: 
     for (const name in setting) {
         if (name === "_scope") continue;
         if (name === "_cycler") continue;
+        if (name === "_forceOverwrite") continue;
         const configTarget = getConfigTargetForSection(`${CONFIG_SECTION}.${parent}`) as ConfigurationTarget;
 
         const store = configTarget === ConfigurationTarget.Workspace ? context.workspaceState : context.globalState;
